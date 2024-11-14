@@ -30,9 +30,25 @@
 				// Check if the user don't choise to quit the program
 				if (choise != 99)
 				{
+					// Make a empty console window and show the name of program
+					Console.Clear();
+					Console.WriteLine(_programName);
+
 					// Take the user to the math function they choise to do
 					switch(choise)
 					{
+						case 1:
+							Addition();
+							break;
+						case 2:
+							Subtraction(); 
+							break;
+						case 3:
+							Division();
+							break;
+						case 4:
+							Multiplication();
+							break;
 						default:
 							break;
 					}
