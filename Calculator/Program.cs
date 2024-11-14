@@ -16,11 +16,63 @@
         /// <param name="args">Anything</param>
         static void Main(string[] args)
         {
+            // Variable for user choise
+            int choise;
+
             // Welcome the user to this program
             Console.WriteLine($"Welcome to {_programName}!");
 
-            // Make a pause in this program
-            Console.ReadKey();
+            do
+            {
+                // Show the menu of this program and wait for the user make their choise
+                int.TryParse(Menu(), out choise);
+
+				// Check if the user don't choise to quit the program
+				if (choise != 99)
+				{
+					// Take the user to the math function they choise to do
+					switch(choise)
+                    {
+                        default:
+                            break;
+                    }
+                    // Make a pause in the program
+					Console.ReadKey();
+				}
+
+			} while (choise != 99);
+            
+        }
+
+        /// <summary>
+        /// Show the menu of this program and wait for the user make their choise
+        /// </summary>
+        /// <returns>The user choise</returns>
+        static string Menu()
+        {
+            // Make a empty console window and show the name of this program
+            Console.Clear();
+			Console.WriteLine(_programName);
+
+            // Make a empty row then show a header for this menu
+			Console.WriteLine();
+            Header("Menu");
+
+			Console.WriteLine();
+
+            // Show the menu itself
+			Console.WriteLine("1. Addition");
+			Console.WriteLine("2. Subtraction");
+			Console.WriteLine("3. Division");
+			Console.WriteLine("4. Multiplication");
+
+			Console.WriteLine("99. Quit the program");
+
+			Console.WriteLine();
+
+            // Ask the user for their choise
+            Console.Write("Make your choise: ");
+            return Console.ReadLine();
         }
 
         /// <summary>
