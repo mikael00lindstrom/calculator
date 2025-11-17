@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="BusinessLibrary/BusinessLibrary.csproj" />
+  <Project Path="CalculatorConsoleUI/CalculatorConsoleUI.csproj" />
+</Solution>
