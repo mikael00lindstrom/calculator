@@ -18,12 +18,100 @@ namespace CalculatorConsoleUI
         /// <param name="args">A array of command-line arguments</param>
         static void Main(string[] args)
         {
+            // Variable for storing user choice
+            int choice;
+
             // Display a welcome message
             Console.WriteLine($"Welcome to {ApplicationName}!");
 
             // Let the user to read the welcome message
             Console.WriteLine("Press any key to continue...");
             Console.ReadKey();
+
+            // Loop to display the menu until the user choose to exit
+            do
+            {
+                // Display the menu and get the user choice
+                choice = Menu();
+
+                // Clear the console for better user experience and display the application name
+                Console.Clear();
+                Console.WriteLine(ApplicationName);
+
+                Console.WriteLine();
+
+                // Perform the operation based on user choice
+                switch (choice)
+                {
+                    case 1:
+                        Addition();
+                        break;
+                    case 2:
+                        Subtraction();
+                        break;
+                    case 3:
+                        Division();
+                        break;
+                    case 4:
+                        Multiplication();
+                        break;
+                    case 5:
+                        Console.WriteLine("Thank you for using the calculator. Goodbye!");
+                        break;
+                    default:
+                        Console.WriteLine("Invalid choice. Try again.");
+                        break;
+                }
+
+                // Let the user time to read the result
+                Console.WriteLine("Press any key to continue...");
+                Console.ReadKey();
+            } while (choice != 5);
+        }
+
+        /// <summary>
+        /// The method to display the menu and get the user choice
+        /// </summary>
+        /// <returns>The integer that symbolized the user choice</returns>
+        static int Menu()
+        {
+            // Create a empty screen for better user experience
+            Console.Clear();
+            Console.WriteLine(ApplicationName);
+
+            // Create a empty line for better readability
+            Console.WriteLine();
+
+            // Display the menu header
+            DispalyAHeader("Menu");
+
+            // Create a empty line for better readability
+            Console.WriteLine();
+
+            // Display the menu options
+            Console.WriteLine("1. Addition");
+            Console.WriteLine("2. Subtraction");
+            Console.WriteLine("3. Division");
+            Console.WriteLine("4. Multiplication");
+            Console.WriteLine("5. Exit");
+
+            // Create a empty line for better readability
+            Console.WriteLine();
+
+            // Let the user to select an option
+            Console.Write("Select an option (1-5): ");
+            int.TryParse(Console.ReadLine()!, out int choice);
+
+            // Validate the user choice
+            if (choice < 1 || choice > 5)
+            {
+                Console.WriteLine("Invalid choice. Please select a valid option (1-5).");
+                Console.WriteLine("Press any key to continue...");
+                Console.ReadKey();
+                return Menu();
+            }
+
+            return choice;
         }
 
         #region Helper methods
