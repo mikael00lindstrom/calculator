@@ -1,4 +1,6 @@
-﻿namespace CalculatorConsoleUI
+﻿using BusinessLibrary;
+
+namespace CalculatorConsoleUI
 {
     /// <summary>
     /// The main class of the calculator console application.
@@ -56,6 +58,121 @@
             return result;
         }
 
+        #endregion
+
+        #region Basic Math Operation UI methods
+        /// <summary>
+        /// The method for addition operation in this application
+        /// </summary>
+        static void Addition()
+        {
+            // Display a header for this method
+            DispalyAHeader("Addition");
+
+            // Variables for calculating of sum in this method
+            int[] numbers = GetSomeInteger();
+            int result = 0;
+
+            // Calculate the sum and display the result
+            Console.Write("The sum of ");
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                // Calculate the sum by using BusinessLibrary
+                result = result.Sum(numbers[i]);
+
+                // Display the current number
+                Console.Write(numbers[i]);
+
+                // Display a comma except for the last number
+                if (i < numbers.Length - 1)
+                    Console.Write(", ");
+            }
+            Console.WriteLine($" are {result}.");
+        }
+
+        /// <summary>
+        /// The method for subtraction operation in this application
+        /// </summary>
+        static void Subtraction()
+        {
+            // Display a header for this method
+            DispalyAHeader("Subtraction");
+
+            // Variables for calculating of difference in this method
+            int[] numbers = GetSomeInteger();
+            int result = 0;
+
+            // Calculate the differnce and display the result
+            Console.Write("The difference of ");
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                // Set or reduce by current number to the result
+                if (i == 0)
+                    result = numbers[i];
+                else
+                    result = result.Subtract(numbers[i]);
+
+                // Display the current number
+                Console.Write(numbers[i]);
+
+                // Display a comma except for the last number
+                if (i < numbers.Length - 1)
+                    Console.Write(", ");
+            }
+            Console.WriteLine($" are {result}.");
+        }
+
+        /// <summary>
+        /// The method for division operation in this application
+        /// </summary>
+        static void Division()
+        {
+            // Display a header for this method
+            DispalyAHeader("Division");
+
+            // Variables for calculating of quotient in this method
+            int a, b;
+            double result = 0;
+
+            // Let the user to enter two integer values
+            Console.Write("Enter the dividend: ");
+            int.TryParse(Console.ReadLine()!, out a);
+            Console.Write("Enter the divisor and it don't allowed be zero: ");
+            int.TryParse(Console.ReadLine()!, out b);
+
+            // Calculate the quotient and display the result
+            try
+            {
+                result = a.Divde(b);
+                Console.WriteLine($"The quotient of {a} and {b} is {Math.Round(result, 2)}.");
+            }
+            catch (DivideByZeroException ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+            }
+        }
+
+        /// <summary>
+        /// The method for multiplication operation in this application
+        /// </summary>
+        static void Multiplication()
+        {
+            // Display a header for this method
+            DispalyAHeader("Multiplication");
+
+            // Variables for calculating of product in this method
+            int a, b, result = 0;
+
+            // Let the user to enter two integer values
+            Console.Write("Enter the first number: ");
+            int.TryParse(Console.ReadLine()!, out a);
+            Console.Write("Enter the second number: ");
+            int.TryParse(Console.ReadLine()!, out b);
+
+            // Calculate the product and display the result
+            result = a.Multply(b);
+            Console.WriteLine($"The product of {a} and {b} is {result}.");
+        }
         #endregion
     }
 }
